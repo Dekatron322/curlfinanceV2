@@ -1,0 +1,240 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+
+
+<div id="content" class="app-content">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-xl-10">
+
+<div class="row">
+
+<div class="col-xl-9">
+
+<div id="general" class="mb-5">
+<h4> Presale Info</h4>
+<p>Official CurlFinance Presale Campaine, One time chance to join the next generation of millionaires.</p>
+<div class="card">
+<div class="list-group list-group-flush">
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Token</div>
+
+</div>
+<div class="align-items-center">
+<div>CurlFinance ($Curl)</div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Token Address</div>
+
+</div>
+<div>
+<a href="https://scan.coredao.org/address/0xc0E49f8C615d3d4c245970F6Dc528E4A47d69a44">0xc0E49f8C615d3d4..</a>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Softcap</div>
+
+</div>
+<div>
+<div>50k Core</div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Hardcap</div>
+
+</div>
+<div>
+<div>100k Core</div>
+</div>
+</div>
+
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+</div>
+</div>
+
+
+<div id="notifications" class="mb-5">
+<h4> Price and Vesting Info</h4>
+
+<div class="card">
+<div class="list-group list-group-flush">
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Listing Price</div>
+
+</div>
+<div>
+<div>0.026 Curl per Core</div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Presale Price</div>
+
+</div>
+<div><div>0.03 Curl per Core</div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Allocation</div>
+<div class="text-white text-opacity-50 d-flex align-items-center">
+
+</div>
+</div>
+<div>
+<div>25% Liquidity 75% Vested</div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Initial Marketcap</div>
+<div class="text-white text-opacity-50 d-flex align-items-center">
+</div>
+</div>
+<div>
+<div>$167,000</div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Vesting Period</div>
+<div class="text-white text-opacity-50 d-flex align-items-center">
+</div>
+</div>
+<div>
+<div>12 Months</div>
+</div>
+</div>
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+</div>
+</div>
+
+
+<div id="privacyAndSecurity" class="mb-5">
+<h4>Presale Time and Info</h4>
+
+<div class="card">
+<div class="list-group list-group-flush">
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Presale Start Time</div>
+
+</div>
+<div>
+<div>2023.03.24 12:00 (UTC) </div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Presale End Time</div>
+
+</div>
+<div>
+<div>2023.03.26 12:00 (UTC) </div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Unsold Token</div>
+
+</div>
+<div>
+<div>Burn </div>
+</div>
+</div>
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Listing On</div>
+<div class="text-white text-opacity-50 d-block d-xl-flex align-items-center">
+</div>
+</div>
+<div>
+<a href="#modalEdit">IceCream Swap</a>
+</div>
+</div>
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+</div>
+</div>
+
+
+<div id="tokenomics" class="mb-5">
+<h4>Tokenomics</h4>
+<div class="card">
+<div class="card-body">
+<div id="apexPieChart"></div>
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+
+</div>
+</div>
+
+
+
+
+</div>
+
+
+<div class="col-xl-3">
+
+<nav id="sidebar-bootstrap" class="navbar navbar-sticky d-none d-xl-block">
+<nav class="nav">
+<a class="nav-link" href="#general" data-toggle="scroll-to">Presale Info</a>
+<a class="nav-link" href="#notifications" data-toggle="scroll-to">Price and Vesting Info</a>
+<a class="nav-link" href="#privacyAndSecurity" data-toggle="scroll-to">Presale time and Info</a>
+<a class="nav-link" href="#tokenomics" data-toggle="scroll-to">Tokenomics</a>
+
+</nav>
+</nav>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+{% endblock %}
+

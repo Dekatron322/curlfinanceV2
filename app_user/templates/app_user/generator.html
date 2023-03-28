@@ -1,0 +1,104 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<br><br><br><br><br><br><br><br>
+<div id="app" class="app app-full-height app-without-header">
+
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+
+
+<div id="content" class="app-content">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-xl-10">
+
+<div class="row">
+
+<div class="col-xl-9">
+
+<h1 class="page-header">
+Contract Generator 
+</h1>
+<hr class="mb-4" />
+
+
+
+
+<div id="sizing" class="mb-5">
+
+<p> <code>Enter your token details to create your contract</code> </p>
+<!--Content to be Displayed when metamask is not available-->
+                                <button class="content uk-button uk-button-gradient uk-width-1-1 uk-width-1-1@m" id="metamask-status"></button>
+                                <!---status check--->
+                                <code class="content hide uk-text-center uk-text-secondary" id="statusText"></code>
+                                <!--When you are connected to mainnet-->
+                                        <p class="content hide uk-text-center uk-text-bold uk-text-primary"><code id="current-address" align="center"></code></p>
+<div class="card">
+    <form id="asset-form" class="uk-form-stacked uk-grid-xsmall uk-grid-small@m uk-child-width-1-1 uk-grid" data-uk-grid>
+<div class="card-body">
+<div class="row mb-3">
+<div class="col-xl-6">
+    <label>Token Name</label>
+<input autocomplete="off" id="name" class="form-control form-control-sm mb-3" type="text" placeholder="e.g tokenxyz" required />
+</div>
+<div class="col-xl-6">
+    <label>Token Symbol</label>
+<input autocomplete="off" id="symbol" class="form-control form-control-sm mb-3" type="text" placeholder="e.g txzy" required />
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-xl-6">
+    <label>Total Supply</label>
+<input autocomplete="off" id="total-supply" class="form-control form-control-sm mb-3" type="number" placeholder="e.g 1234567890" required />
+</div>
+<div class="col-xl-6">
+    <label>Decimal</label>
+<input id="decimals" class="form-control form-control-sm mb-3" type="text" placeholder="e.g 18" required />
+</div>
+</div>
+
+<button id="submit-btn" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Create Token</button>
+</div>
+</form>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+<script src="{% static 'assets/js/vendor.min.js' %}" ></script>
+<script src="{% static 'assets/js/app.min.js' %}" ></script>
+ <script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'popper.min.js' %}"></script>
+        <script src="{% static 'bootstrap.min.js' %}"></script>
+        <script src="{% static 'web3.min.js' %}"></script>
+        <!--Core-->
+        <script src="{% static 'index.js' %}"></script>
+{% endblock %}

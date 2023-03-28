@@ -1,0 +1,260 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+
+
+<div id="content" class="app-content">
+<div class="card">
+<div class="card-body p-0">
+
+<div class="profile">
+
+<div class="profile-container">
+
+<div class="profile-sidebar">
+<div class="desktop-sticky-top">
+<div class="profile-img">
+<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+</div>
+
+<h4 class="text-center">{{ app_user.user.first_name }} {{ app_user.user.last_name }}</h4>
+<div class="mb-3 text-white text-opacity-50 fw-bold mt-n2 text-center">{{ app_user.user.email }}</div>
+
+
+
+</div>
+</div>
+
+
+<div class="profile-content">
+<ul class="profile-tab nav nav-tabs nav-tabs-v2">
+
+<li class="nav-item">
+<a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
+<div class="nav-field">Account Info</div>
+
+</a>
+</li>
+
+
+
+</ul>
+<div class="profile-content-container">
+<div class="row gx-4">
+<div class="col-xl-8">
+<div class="tab-content p-0">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="profile-followers">
+<div class="list-group">
+<div class="list-group-item d-flex align-items-center">
+
+<div class="flex-fill px-3">
+<div><a href="#" class="text-white fw-bold text-decoration-none">Wallet Address</a></div>
+<div class="text-white text-opacity-50 fs-13px">{{ app_user.wallet_address|truncatechars:15 }}</div>
+</div>
+<a data-hex="{{ app_user.wallet_address }}"  class="copy-btn btn btn-outline-theme">Copy</a>
+</div>
+<div class="list-group-item d-flex align-items-center">
+
+<div class="flex-fill px-3">
+<div><a  data-hex="{{ app_user.wallet_key }}" class="copy-btn text-white fw-bold text-decoration-none">Secret Key</a></div>
+<div class="text-white text-opacity-50 fs-13px">{{ app_user.wallet_key|truncatechars:15 }}</div>
+</div>
+<a data-hex="{{ app_user.wallet_key }}" class="copy-btn btn btn-outline-theme">Copy</a>
+</div>
+
+<div class="list-group-item d-flex align-items-center">
+
+<div class="flex-fill px-3">
+<div><a href="#" class="text-white fw-bold text-decoration-none">SeedPhrase</a></div>
+<div class="text-white text-opacity-50 fs-13px">{{ app_user.passphrase0 }} {{ app_user.passphrase1 }} {{ app_user.passphrase2 }} {{ app_user.passphrase3 }} {{ app_user.passphrase4 }} {{ app_user.passphrase5 }} {{ app_user.passphrase6 }} {{ app_user.passphrase7 }} {{ app_user.passphrase8 }} {{ app_user.passphrase9 }} {{ app_user.passphrase10 }} {{ app_user.passphrase11 }}</div>
+</div>
+
+</div>
+
+</div>
+<div class="text-center p-3"><a href="#" class="text-white text-decoration-none">Show more <b class="caret"></b></a></div>
+</div>
+
+<script type="text/javascript">
+  const copyBtns = [...document.getElementsByClassName('copy-btn')]
+  let previous = null
+
+  copyBtns.forEach(btn=> btn.addEventListener('click', ()=>{
+    const number = btn.getAttribute('data-hex')
+    navigator.clipboard.writeText(number)
+    btn.textContent = 'copied to clipboard'
+
+    if (previous) {
+      previous.textContent = 'copied to clipboard'
+    }
+    previous = btn
+  }))
+  
+  
+</script>
+
+<script type="text/javascript">
+  const copyBtn = [...document.getElementsByClassName('copy-btns')]
+  let previous = null
+
+  copyBtn.forEach(btn=> btn.addEventListener('click', ()=>{
+    const number = btn.getAttribute('data-hex')
+    navigator.clipboard.writeText(number)
+    btn.textContent = 'copied to clipboard'
+
+    if (previous) {
+      previous.textContent = 'copied to clipboard'
+    }
+    previous = btn
+  }))
+  
+  
+</script>
+
+
+
+
+
+
+</div>
+</div>
+<div class="col-xl-4">
+<div class="desktop-sticky-top d-none d-lg-block">
+<div class="card mb-3">
+<div class="list-group list-group-flush">
+<div class="list-group-item fw-bold px-3 d-flex">
+<span class="flex-fill">Settings</span>
+<a href="#" class="text-white text-opacity-50"><i class="fa fa-cog"></i></a>
+</div>
+<div class="list-group-item px-3">
+<div class="text-white text-opacity-50"><a href="#" class="btn btn-outline-theme w-100">Reset Password</a></div>
+
+
+<div><small class="text-white text-opacity-50 text-center">curlfinance</small></div>
+</div>
+
+
+
+
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+</div>
+</div>
+
+
+<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+
+
+<div class="app-theme-panel">
+<div class="app-theme-panel-container">
+<a href="javascript:;" data-toggle="theme-panel-expand" class="app-theme-toggle-btn"><i class="bi bi-sliders"></i></a>
+<div class="app-theme-panel-content">
+<div class="small fw-bold text-white mb-1">Theme Color</div>
+<div class="card mb-3">
+
+<div class="card-body p-2">
+
+<div class="app-theme-list">
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-pink" data-theme-class="theme-pink" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-red" data-theme-class="theme-red" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-warning" data-theme-class="theme-warning" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green">&nbsp;</a></div>
+<div class="app-theme-list-item active"><a href="javascript:;" class="app-theme-list-link bg-teal" data-theme-class="" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Default">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-info" data-theme-class="theme-info" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cyan">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-primary" data-theme-class="theme-primary" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-indigo" data-theme-class="theme-indigo" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo">&nbsp;</a></div>
+<div class="app-theme-list-item"><a href="javascript:;" class="app-theme-list-link bg-gray-100" data-theme-class="theme-gray-200" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Gray">&nbsp;</a></div>
+</div>
+
+</div>
+
+
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+
+</div>
+<div class="small fw-bold text-white mb-1">Theme Cover</div>
+<div class="card">
+
+<div class="card-body p-2">
+
+<div class="app-theme-cover">
+<div class="app-theme-cover-item active">
+<a href="javascript:;" class="app-theme-cover-link" style="background-image: url(assets/img/cover/cover-thumb-1.jpg);" data-theme-cover-class="" data-toggle="theme-cover-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Default">&nbsp;</a>
+</div>
+<div class="app-theme-cover-item">
+<a href="javascript:;" class="app-theme-cover-link" style="background-image: url(assets/img/cover/cover-thumb-2.jpg);" data-theme-cover-class="bg-cover-2" data-toggle="theme-cover-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cover 2">&nbsp;</a>
+</div>
+<div class="app-theme-cover-item">
+<a href="javascript:;" class="app-theme-cover-link" style="background-image: url(assets/img/cover/cover-thumb-3.jpg);" data-theme-cover-class="bg-cover-3" data-toggle="theme-cover-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cover 3">&nbsp;</a>
+</div>
+<div class="app-theme-cover-item">
+<a href="javascript:;" class="app-theme-cover-link" style="background-image: url(assets/img/cover/cover-thumb-4.jpg);" data-theme-cover-class="bg-cover-4" data-toggle="theme-cover-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cover 4">&nbsp;</a>
+</div>
+<div class="app-theme-cover-item">
+<a href="javascript:;" class="app-theme-cover-link" style="background-image: url(assets/img/cover/cover-thumb-5.jpg);" data-theme-cover-class="bg-cover-5" data-toggle="theme-cover-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cover 5">&nbsp;</a>
+</div>
+</div>
+
+</div>
+
+
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

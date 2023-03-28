@@ -1,0 +1,59 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+<div class="login">
+
+{{data.sender}}
+<div class="login-content form-group">
+<form action="" method="POST" name="">
+	{% csrf_token %}
+<h1 class="text-center">Withdraw Tokens</h1>
+<h4 style="text-align:center"><img class="img-fluid rounded-circle" width="30px" src="{{ token_logo }}" alt=""  data-bs-toggle="modal" data-bs-target="#exampleModal">     {{token_name}}</h4>
+<div class="mb-3">
+<label class="form-label">Address <span class="text-danger">*</span></label>
+<input type="text" name="receiver" class="form-control form-control-lg bg-white bg-opacity-5" value="" placeholder="e.g 0Xrtie245..." />
+</div>
+<div class="mb-3">
+<div class="d-flex form-group">
+<label class="form-label">Amount <span class="text-danger">*</span></label>
+<a href="#" class="ms-auto text-white text-decoration-none text-opacity-50">Available:{{ brise_balance|floatformat:5|intcomma }}</a>
+</div>
+<input name="amount" type="number" class="form-control form-control-lg bg-white bg-opacity-5 prc" value="" placeholder="0.00" />
+</div>
+<div class="mb-3">
+
+
+<div class="d-flex justify-content-between fw-600 fs-16 my-5 form-group" style="color: #757575;"><span class="fw-600 fs-16">Received Amount:</span><span> <output id="result"></output>.00</span></div>
+</div>
+
+<button type="submit" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Withdraw</button>
+
+</div>
+</form>
+</div>
+
+</div>
+
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+                                            <script>
+                                                $('.form-group').on('input', '.prc', function(){
+                                                    var totalSum = 0;
+                                                    $('.form-group .prc').each(function() {
+                                                        var inputVal = $(this).val();
+                                                        if($.isNumeric(inputVal)){
+                                                            totalSum += parseFloat(inputVal);
+                                                        }
+                                                        $('#result').text(totalSum);
+                                                    })
+                                                });
+                                            </script>
+
+
+<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+
+
+{% endblock %}

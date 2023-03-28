@@ -1,0 +1,185 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+
+
+<div id="content" class="app-content">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-xl-10">
+
+<div class="row">
+
+<div class="col-xl-9">
+
+
+
+
+<h6 style="text-align:center"> Your Assets Value</h6>
+<h4 style="text-align:center">${{ total|floatformat:9|intcomma }}</h4>
+<p style="text-align:center"><div class="p-3 px-4 mt-auto">
+<a class="btn d-block btn-outline-theme copy-btn" data-hex="{{ app_user.wallet_address }}">
+<i class="fa fa-wallet me-2 ms-n2 opacity-5"></i> {{ app_user.wallet_address|truncatechars:15 }}
+</a>
+</div>
+</p>
+
+
+
+{% for item in data %}
+<div id="resetSettings" class="mb-5">
+    
+<h6><img width="20px" src="{{ item.logo }}"> {{ item.name }}  <small style="float:right" class="badge border border-theme text-theme">${{ item.unit_price|floatformat:10|intcomma }}</small></h6>
+
+
+
+<div class="card">
+<div class="list-group list-group-flush">
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Total: {{ item.balance|floatformat:5|intcomma }}</div>
+<div class="text-white text-opacity-50">
+Balance: ${{ item.total_price|floatformat:10|intcomma }}
+</div>
+</div>
+<div>
+
+<a href="{% url 'wallet:send_canto_token' item.token_address %}" class="btn btn-outline-success w-120px">Withdrawal</a>
+</div>
+</div>
+</div>
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+</div>
+</div>
+
+{% endfor %}
+{% if messages %}
+    {% for message in messages %}
+        <a target="_blank" href="https://brisescan.com/tx/{{ message }}/internal-transactions/" class="btn d-block btn-outline-theme">
+            {{ message }}
+        </a>    
+        
+    {% endfor %}
+{% endif %}
+{{ txn_hash }}
+</div>
+
+
+<div class="col-xl-3">
+
+<nav id="sidebar-bootstrap" class="navbar navbar-sticky d-none d-xl-block">
+<nav class="nav">
+<a class="nav-link" href="#general" data-toggle="scroll-to">Transaction History</a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+<a class="nav-link" href="#general" data-toggle="scroll-to"></a>
+
+</nav>
+</nav>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="modal fade" id="modalEdit">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Edit name</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<div class="mb-3">
+<label class="form-label">Name</label>
+<div class="row row-space-10">
+<div class="col-4">
+<input class="form-control" placeholder="First" value="Sean" />
+</div>
+<div class="col-4">
+<input class="form-control" placeholder="Middle" value="" />
+</div>
+<div class="col-4">
+<input class="form-control" placeholder="Last" value="Ngu" />
+</div>
+</div>
+</div>
+<div class="alert alert-muted">
+<b>Please note:</b>
+If you change your name, you can't change it again for 60 days.
+Don't add any unusual capitalization, punctuation, characters or random words.
+<a href="#" class="alert-link">Learn more.</a>
+</div>
+<div class="mb-3">
+<label class="form-label">Other Names</label>
+<div>
+<a href="#" class="btn btn-outline-default"><i class="fa fa-plus fa-fw"></i> Add other names</a>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-outline-default" data-bs-dismiss="modal">Close</button>
+<button type="button" class="btn btn-outline-theme">Save changes</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+
+<script type="text/javascript">
+  const copyBtns = [...document.getElementsByClassName('copy-btn')]
+  let previous = null
+
+  copyBtns.forEach(btn=> btn.addEventListener('click', ()=>{
+    const number = btn.getAttribute('data-hex')
+    navigator.clipboard.writeText(number)
+    btn.textContent = 'address copied'
+
+    if (previous) {
+      previous.textContent = 'address copied'
+    }
+    previous = btn
+  }))
+</script>
+{% endblock %}
