@@ -1,0 +1,134 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+<div class="login">
+
+{{data.sender}}
+<div class="login-content form-group">
+<form method="POST">
+	{% csrf_token %}
+<h1 class="text-center">Add Presale funds</h1>
+<h4 style="text-align:center"><img class="img-fluid rounded-circle" width="35px" src="https://curlfinance.com/static/assets/images/logo/curlfi.png" alt=""  data-bs-toggle="modal" data-bs-target="#exampleModal">$CURL</h4>
+
+<div class=" flex-1">
+
+
+<div class="d-flex form-group mb-3">
+<label class="form-label">A presale wallet have been generated for you. Please fund the wallet with the presale tokens</label>
+</div>
+
+</div>
+<div class="mb-3">
+<div class="d-flex form-group">
+<label class="form-label">Wallet Address <span class="text-danger">{{ ido.wallet_address }}</span></label>
+
+
+</div>
+This presale will be inactive till you fund the presale wallet
+</div>
+<div class="mb-3">
+
+<a href="{% url 'launchpad:my_contributions' %}" class="btn btn-outline-theme btn-sm d-block w-100 fw-500 mb-3">Continue</a>
+
+<p style="text-align:center">Ends In: {{ ido.ido_stop }}</p>
+<div class="card">
+
+<div class="card-body">
+
+<div class="d-flex align-items-center mb-3">
+<div class="flex-fill fw-bold fs-16px">Status</div>
+<a href="#" class="text-decoration-none text-white text-opacity-50">in progress</a>
+</div>
+
+<div class="row mb-2">
+<div class="col-6">
+<div>Sale type</div>
+</div>
+<div class="col-3 text-center"></div>
+<div class="col-3 "><span class="text-theme">public</span> </div>
+</div>
+<div class="row mb-2">
+<div class="col-6">
+<div>Min Contribution</div>
+</div>
+<div class="col-3 text-center"></div>
+<div class="col-3 "><span class="text-theme">{{ ido.tier0_min }} Core</span> </div>
+</div>
+<div class="row mb-2">
+<div class="col-6">
+<div>Max Contribution</div>
+</div>
+<div class="col-3 text-center"></div>
+<div class="col-3 "><span class="text-theme">{{ ido.tier0_max }} Core</span> </div>
+</div>
+<div class="row">
+<div class="col-6">
+<div>Total Contributors</div>
+</div>
+<div class="col-3 text-center"></div>
+<div class="col-3 "><span class="text-theme">{{ ido.contributors.count }}</span> </div>
+</div>
+
+
+</div>
+
+
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+
+</div>
+<br>
+<button type="submit" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Emergency Withdraw</button>
+</div>
+
+</form>
+
+
+</div>
+
+
+</div>
+
+<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script>
+    $('.form-group').on('input', '.prc', function(){
+        var totalSum = 0;
+        $('.form-group .prc').each(function() {
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal)){
+                totalSum = {{ ido.presale_price }} * parseFloat(inputVal);
+            }
+            $('#result').text(totalSum);
+        })
+    });
+</script>
+
+<script>
+    $(function () {
+  $("input").keydown(function () {
+    // Save old value.
+    if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+    $(this).data("old", $(this).val());
+  });
+  $("input").keyup(function () {
+    // Check correct, else revert back to old value.
+    if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+      ;
+    else
+      $(this).val($(this).data("old"));
+  });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+
+
+<div id="content" class="app-content">
+
+
+
+<div id="app" class="app app-content-full-height app-without-sidebar app-without-header">
+
+
+<div class="pos " id="pos">
+
+
+
+
+
+<div class="">
+<div class=" h-100 p-3" data-scrollbar="true" data-height="100%">
+<div class="row gx-3">
+
+{% if my_stakes %}
+
+{% for item in my_stakes %}
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 pb-3">
+    <div class="card h-100">
+    <div class="card-body h-100 p-1">
+    <div class="pos-product">
+    <div class="img" style="background-image: url({{ item.image.url }})"></div>
+    <div class="info">
+    <div class="title text-truncate" style="display:flex; justify-content: space-between;">
+        <div>{{ item.name }} <span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="bi bi-patch-check fs-9px fa-fw me-5px"></i> Verified</span></div>
+        <img width="30px" src="{{ item.logo.url }}">
+    </div>
+    <br>
+    <div class=" flex-1">
+
+    <div class="mb-2 fs-5 text-truncate">Progress: 60.04%</div>
+    <div class="progress h-3px bg-white-transparent-2 mb-1" style="height: 20px !important;">
+    <div class="progress-bar bg-theme" style="width: 60%;"></div>
+    </div>
+    <div class="fs-11px text-white text-opacity-50 mb-2 text-truncate">
+    stake: {{ item.pub_date }}
+    <br />
+    harvest: {{ item.due_date }}
+    </div>
+
+    </div>
+
+    <div class="d-flex align-items-center mb-3">
+    <div class="w-100px">Availability:</div>
+    <div class="flex-1">
+    <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" name="qty" id="product1" checked value="1" />
+    <label class="form-check-label" for="product1"></label>
+    </div>
+    </div>
+    </div>
+    <div>
+    <a href="{% url 'stake:harvest' item.id %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Harvest</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="card-arrow">
+    <div class="card-arrow-top-left"></div>
+    <div class="card-arrow-top-right"></div>
+    <div class="card-arrow-bottom-left"></div>
+    <div class="card-arrow-bottom-right"></div>
+    </div>
+    </div>
+    </div>
+
+    {% endfor %}
+{% else %}
+
+<p>Sorry, no idos yet</p>
+
+{% endif %}
+
+
+
+</div>
+
+
+<div class="card-arrow">
+<div class="card-arrow-top-left"></div>
+<div class="card-arrow-top-right"></div>
+<div class="card-arrow-bottom-left"></div>
+<div class="card-arrow-bottom-right"></div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+</div>
+
+
+<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+
+
+{% endblock %}
+

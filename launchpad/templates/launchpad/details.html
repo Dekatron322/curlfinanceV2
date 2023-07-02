@@ -21,7 +21,7 @@
 
 <div id="general" class="mb-5">
 <h4> Presale Info</h4>
-<p>Official CurlFinance Presale Campaine, One time chance to join the next generation of millionaires.</p>
+<p>{{ ido.description }}.</p>
 <div class="card">
 <div class="list-group list-group-flush">
 <div class="list-group-item d-flex align-items-center">
@@ -30,7 +30,7 @@
 
 </div>
 <div class="align-items-center">
-<div>CurlFinance ($Curl)</div>
+<div>{{ ido.name }}</div>
 </div>
 </div>
 <div class="list-group-item d-flex align-items-center">
@@ -39,7 +39,7 @@
 
 </div>
 <div>
-<a href="https://scan.coredao.org/address/0xc0E49f8C615d3d4c245970F6Dc528E4A47d69a44">0xc0E49f8C615d3d4..</a>
+<a href="https://scan.coredao.org/address/{{ ido.token_address }}">{{ ido.token_address }}..</a>
 </div>
 </div>
 <div class="list-group-item d-flex align-items-center">
@@ -48,7 +48,7 @@
 
 </div>
 <div>
-<div>50k Core</div>
+<div>{{ ido.soft_cap }} Curl</div>
 </div>
 </div>
 <div class="list-group-item d-flex align-items-center">
@@ -57,7 +57,7 @@
 
 </div>
 <div>
-<div>100k Core</div>
+<div>{{ ido.hard_cap }} Curl</div>
 </div>
 </div>
 
@@ -83,7 +83,7 @@
 
 </div>
 <div>
-<div>0.026 Curl per Core</div>
+<div>{{ ido.listing_price }} {{ ido.name }} per Core</div>
 </div>
 </div>
 <div class="list-group-item d-flex align-items-center">
@@ -91,7 +91,7 @@
 <div>Presale Price</div>
 
 </div>
-<div><div>0.03 Curl per Core</div>
+<div><div>{{ ido.presale_price }} {{ ido.name }} per Core</div>
 </div>
 </div>
 <div class="list-group-item d-flex align-items-center">
@@ -135,30 +135,119 @@
 </div>
 </div>
 
-
 <div id="privacyAndSecurity" class="mb-5">
-<h4>Presale Time and Info</h4>
+<h4>Allocation Info(Contribution)</h4>
 
 <div class="card">
+
 <div class="list-group list-group-flush">
 <div class="list-group-item d-flex align-items-center">
 <div class="flex-1 text-break">
-<div>Presale Start Time</div>
+<div>Liquidity</div>
 
 </div>
 <div>
-<div>2023.03.24 12:00 (UTC) </div>
+<div>{{ ido.allocation_cf_liquidity }}% </div>
 </div>
 </div>
+
 <div class="list-group-item d-flex align-items-center">
 <div class="flex-1 text-break">
-<div>Presale End Time</div>
+<div>Project</div>
 
 </div>
 <div>
-<div>2023.03.26 12:00 (UTC) </div>
+<div>{{ ido.allocation_cf_project }}% </div>
 </div>
 </div>
+
+<br />
+<div id="privacyAndSecurity" class="mb-5">
+<h4>Allocation Info(Project Tokens)</h4>
+
+<div class="card">
+
+<div class="list-group list-group-flush">
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Liquidity</div>
+
+</div>
+<div>
+<div>{{ ido.allocation_pt_liquidity }}% </div>
+</div>
+</div>
+
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Contributors</div>
+
+</div>
+<div>
+<div>{{ ido.allocation_pt_contributors }}% </div>
+</div>
+</div>
+
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Project</div>
+
+</div>
+<div>
+<div>{{ ido.allocation_pt_project }}% </div>
+</div>
+</div>
+
+
+<br /><br />
+<div id="privacyAndSecurity" class="mb-5">
+<h4>Whitelist/Ido Time and Info</h4>
+
+<div class="card">
+
+<div class="list-group list-group-flush">
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Whitelist Start Time</div>
+
+</div>
+<div>
+<div>{{ ido.whitelist_start }} </div>
+</div>
+</div>
+
+<div class="list-group-item d-flex align-items-center">
+<div class="flex-1 text-break">
+<div>Whitelist End Time</div>
+
+</div>
+<div>
+<div>{{ ido.whitelist_stop }} </div>
+</div>
+</div>
+
+<div class="list-group list-group-flush">
+    <div class="list-group-item d-flex align-items-center">
+    <div class="flex-1 text-break">
+    <div>Presale Start Time</div>
+    
+    </div>
+    <div>
+    <div>{{ ido.ido_start }} </div>
+    </div>
+    </div>
+
+    <div class="list-group list-group-flush">
+        <div class="list-group-item d-flex align-items-center">
+        <div class="flex-1 text-break">
+        <div>Presale Stop Time</div>
+        
+        </div>
+        <div>
+        <div>{{ ido.ido_stop }} </div>
+        </div>
+        </div>
+
 <div class="list-group-item d-flex align-items-center">
 <div class="flex-1 text-break">
 <div>Unsold Token</div>
@@ -205,8 +294,65 @@
 </div>
 </div>
 
+<div class="d-flex align-items-center mb-3">
 
+    <a href="{% url 'launchpad:add_ido' %}">Add Ido</a>
 
+</div>
+
+{% if whitelisting %}
+<div class="d-flex align-items-center mb-3">
+
+    <a href="{% url 'stake:pool' ido.id %}">Join whitelist</a>
+
+</div>
+
+{% else %}
+
+<div class="d-flex align-items-center mb-3">
+
+    <a href="{% url 'launchpad:contribute' ido.id %}">Contribute</a>
+
+</div>
+
+{% endif %}
+
+<div class="d-flex align-items-center mb-3">
+
+    <a href="{% url 'launchpad:e_withdraw' ido.id %}">Emergency Withdraw</a>
+
+</div>
+
+<br />
+<br />
+<h3>Whitelist Contributions for this Ido</h3>
+
+{% if ido.whitelist.all %}
+    {% for item in ido.whitelist.all %}
+        <small>ido: {{ item.wallet_address }}</small><br />
+        <small>contribution: {{ item.input_amount }}curl</small><br />
+        <small>tier: {{ item.tier }}</small><br />
+        <hr>
+    {% endfor %}
+
+{% else %}
+    <p>Sorry, no whitelist yet.</p>
+{% endif %}
+
+<br />
+
+<h3>Other Contributions for this Ido</h3>
+{% if ido.contributors.all %}
+    {% for item in ido.contributors.all %}
+        <small>{{ item.wallet_address }}</small><br />
+        <small>contribution: {{ item.input_amount }}curl</small><br />
+        <small>Tier: O</small><br />
+        <hr>
+    {% endfor %}
+
+{% else %}
+    <p>Sorry, no contributions yet.</p>
+{% endif %}
 
 </div>
 
