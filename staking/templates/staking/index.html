@@ -31,73 +31,77 @@ Curl Finance Staking Pool <small>Stake Curl earn any token of your choice.</smal
 </h1>
 
 
+<div class="d-flex align-items-center mb-3">
+
+    <a href="{% url 'stake:my_stakes' %}">My Stakes</a>
+
+</div>
+
 <div class="">
 <div class=" h-100 p-3" data-scrollbar="true" data-height="100%">
 <div class="row gx-3">
-<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 pb-3">
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<div class="pos-product">
-<div class="img" style="background-image: url({% static 'assets/img/staking_bg.png' %})"></div>
-<div class="info">
-<div class="title text-truncate" style="display:flex; justify-content: space-between;">
-    <div>CURL Pool</div>
-    <img width="30px" src="https://media.discordapp.net/attachments/1024628534955745340/1040725380727844914/CORE_logo.png">
-</div>
-<br>
-<a href="{% url 'stake:stake' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake Now</a>
 
-
-<div class="d-flex align-items-center mb-3">
-<div class="w-100px">Availability:</div>
-<div class="flex-1">
-<div class="form-check form-switch">
-<input class="form-check-input" type="checkbox" name="qty" id="product1" checked value="1" />
-<label class="form-check-label" for="product1"></label>
-</div>
-</div>
-</div>
-<div>
-    
-
-<div class="row mb-2">
-<div class="col-6">
-<div>Status</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">Live</span> </div>
-</div>
-
-<div class="row mb-2">
-<div class="col-6">
-<div>APR</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">20000%</span> </div>
-</div>
-<div class="row mb-2">
-<div class="col-6">
-<div>Your Stake</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">0.000</span> </div>
-</div>
-
-
-
-<button type="submit" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Harvest</button>
-</div>
-</div>
-</div>
-</div>
-<div class="card-arrow">
-<div class="card-arrow-top-left"></div>
-<div class="card-arrow-top-right"></div>
-<div class="card-arrow-bottom-left"></div>
-<div class="card-arrow-bottom-right"></div>
-</div>
-</div>
-</div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 pb-3">
+        <div class="card h-100">
+        <div class="card-body h-100 p-1">
+        <div class="pos-product">
+        <div class="img" style="background-image: url({% static 'assets/img/staking_bg.png' %})"></div>
+        <div class="info">
+        <div class="title text-truncate" style="display:flex; justify-content: space-between;">
+            <div>CURL Pool(1)</div>
+            <img width="30px" src="https://media.discordapp.net/attachments/1024628534955745340/1040725380727844914/CORE_logo.png">
+        </div>
+        <br>
+        <a href="{% url 'stake:stake' ido_id '1' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake 1 curl Now</a>
+        
+        <div class=" flex-1">
+        
+        
+        
+        
+        
+        </div>
+        
+        
+        <div>
+            
+        
+        <div class="row mb-2">
+        <div class="col-6">
+        <div>Status</div>
+        </div>
+        <div class="col-3 text-center"></div>
+        <div class="col-3 "><span class="text-theme">Live</span> </div>
+        </div>
+        
+        <div class="row mb-2">
+        <div class="col-6">
+        <div>APR</div>
+        </div>
+        <div class="col-3 text-center"></div>
+        <div class="col-3 "><span class="text-theme">20000%</span> </div>
+        </div>
+        <div class="row mb-2">
+        <div class="col-6">
+        <div>Your Stake</div>
+        </div>
+        <div class="col-3 text-center"></div>
+        <div class="col-3 "><span class="text-theme">0.000</span> </div>
+        </div>
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="card-arrow">
+        <div class="card-arrow-top-left"></div>
+        <div class="card-arrow-top-right"></div>
+        <div class="card-arrow-bottom-left"></div>
+        <div class="card-arrow-bottom-right"></div>
+        </div>
+        </div>
+        </div>
 
 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 pb-3">
 <div class="card h-100">
@@ -106,11 +110,11 @@ Curl Finance Staking Pool <small>Stake Curl earn any token of your choice.</smal
 <div class="img" style="background-image: url({% static 'assets/img/staking_bg.png' %})"></div>
 <div class="info">
 <div class="title text-truncate" style="display:flex; justify-content: space-between;">
-    <div>CURL Pool</div>
+    <div>CURL Pool(2)</div>
     <img width="30px" src="https://media.discordapp.net/attachments/1024628534955745340/1040725380727844914/CORE_logo.png">
 </div>
 <br>
-<a href="{% url 'launchpad:contribute' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake Now</a>
+<a href="{% url 'stake:stake' ido_id '2' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake 2 curl Now</a>
 
 <div class=" flex-1">
 
@@ -120,15 +124,7 @@ Curl Finance Staking Pool <small>Stake Curl earn any token of your choice.</smal
 
 </div>
 
-<div class="d-flex align-items-center mb-3">
-<div class="w-100px">Availability:</div>
-<div class="flex-1">
-<div class="form-check form-switch">
-<input class="form-check-input" type="checkbox" name="qty" id="product1" checked value="1" />
-<label class="form-check-label" for="product1"></label>
-</div>
-</div>
-</div>
+
 <div>
     
 
@@ -156,8 +152,6 @@ Curl Finance Staking Pool <small>Stake Curl earn any token of your choice.</smal
 </div>
 
 
-
-<button type="submit" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Harvest</button>
 </div>
 </div>
 </div>
@@ -170,150 +164,67 @@ Curl Finance Staking Pool <small>Stake Curl earn any token of your choice.</smal
 </div>
 </div>
 </div>
-
 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 pb-3">
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<div class="pos-product">
-<div class="img" style="background-image: url({% static 'assets/img/staking_bg.png' %})"></div>
-<div class="info">
-<div class="title text-truncate" style="display:flex; justify-content: space-between;">
-    <div>CURL Pool</div>
-    <img width="30px" src="https://media.discordapp.net/attachments/1024628534955745340/1040725380727844914/CORE_logo.png">
-</div>
-<br>
-<a href="{% url 'launchpad:contribute' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake Now</a>
-
-<div class=" flex-1">
-
-
-
-
-
-</div>
-
-<div class="d-flex align-items-center mb-3">
-<div class="w-100px">Availability:</div>
-<div class="flex-1">
-<div class="form-check form-switch">
-<input class="form-check-input" type="checkbox" name="qty" id="product1" checked value="1" />
-<label class="form-check-label" for="product1"></label>
-</div>
-</div>
-</div>
-<div>
+    <div class="card h-100">
+    <div class="card-body h-100 p-1">
+    <div class="pos-product">
+    <div class="img" style="background-image: url({% static 'assets/img/staking_bg.png' %})"></div>
+    <div class="info">
+    <div class="title text-truncate" style="display:flex; justify-content: space-between;">
+        <div>CURL Pool(3)</div>
+        <img width="30px" src="https://media.discordapp.net/attachments/1024628534955745340/1040725380727844914/CORE_logo.png">
+    </div>
+    <br>
+    <a href="{% url 'stake:stake' ido_id '3' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake 3 curl Now</a>
     
-
-<div class="row mb-2">
-<div class="col-6">
-<div>Status</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">Live</span> </div>
-</div>
-
-<div class="row mb-2">
-<div class="col-6">
-<div>APR</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">20000%</span> </div>
-</div>
-<div class="row mb-2">
-<div class="col-6">
-<div>Your Stake</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">0.000</span> </div>
-</div>
-
-
-
-<button type="submit" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Harvest</button>
-</div>
-</div>
-</div>
-</div>
-<div class="card-arrow">
-<div class="card-arrow-top-left"></div>
-<div class="card-arrow-top-right"></div>
-<div class="card-arrow-bottom-left"></div>
-<div class="card-arrow-bottom-right"></div>
-</div>
-</div>
-</div>
-
-<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 pb-3">
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<div class="pos-product">
-<div class="img" style="background-image: url({% static 'assets/img/staking_bg.png' %})"></div>
-<div class="info">
-<div class="title text-truncate" style="display:flex; justify-content: space-between;">
-    <div>CURL Pool</div>
-    <img width="30px" src="https://media.discordapp.net/attachments/1024628534955745340/1040725380727844914/CORE_logo.png">
-</div>
-<br>
-<a href="{% url 'launchpad:contribute' %}" class="btn btn-success d-block mb-2"><i class="fa fa-check fa-fw"></i>Stake Now</a>
-
-<div class=" flex-1">
-
-
-
-
-
-</div>
-
-<div class="d-flex align-items-center mb-3">
-<div class="w-100px">Availability:</div>
-<div class="flex-1">
-<div class="form-check form-switch">
-<input class="form-check-input" type="checkbox" name="qty" id="product1" checked value="1" />
-<label class="form-check-label" for="product1"></label>
-</div>
-</div>
-</div>
-<div>
+    <div class=" flex-1">
     
-
-<div class="row mb-2">
-<div class="col-6">
-<div>Status</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">Live</span> </div>
-</div>
-
-<div class="row mb-2">
-<div class="col-6">
-<div>APR</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">20000%</span> </div>
-</div>
-<div class="row mb-2">
-<div class="col-6">
-<div>Your Stake</div>
-</div>
-<div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">0.000</span> </div>
-</div>
-
-
-
-<button type="submit" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Harvest</button>
-</div>
-</div>
-</div>
-</div>
-<div class="card-arrow">
-<div class="card-arrow-top-left"></div>
-<div class="card-arrow-top-right"></div>
-<div class="card-arrow-bottom-left"></div>
-<div class="card-arrow-bottom-right"></div>
-</div>
-</div>
-</div>
+    
+    
+    
+    
+    </div>
+    
+    
+    <div>
+        
+    
+    <div class="row mb-2">
+    <div class="col-6">
+    <div>Status</div>
+    </div>
+    <div class="col-3 text-center"></div>
+    <div class="col-3 "><span class="text-theme">Live</span> </div>
+    </div>
+    
+    <div class="row mb-2">
+    <div class="col-6">
+    <div>APR</div>
+    </div>
+    <div class="col-3 text-center"></div>
+    <div class="col-3 "><span class="text-theme">20000%</span> </div>
+    </div>
+    <div class="row mb-2">
+    <div class="col-6">
+    <div>Your Stake</div>
+    </div>
+    <div class="col-3 text-center"></div>
+    <div class="col-3 "><span class="text-theme">0.000</span> </div>
+    </div>
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="card-arrow">
+    <div class="card-arrow-top-left"></div>
+    <div class="card-arrow-top-right"></div>
+    <div class="card-arrow-bottom-left"></div>
+    <div class="card-arrow-bottom-right"></div>
+    </div>
+    </div>
+    </div>
 
 </div>
 

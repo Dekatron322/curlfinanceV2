@@ -387,7 +387,7 @@
 </a>
 <div class="menu-submenu">
 <div class="menu-item">
-<a href="{% url 'stake:pool' %}" target="_blank" class="menu-link">
+<a href="#" target="_blank" class="menu-link">
 <div class="menu-text">Core Chain</div>
 </a>
 </div>
@@ -457,7 +457,16 @@
 </div>
 
 </div>
+{% if messages %}
+    {% for message in messages %}
+        <a  href="" class="btn d-block btn-outline-theme">
+            {{ message }}
+        </a>    
+        
+    {% endfor %}
+{% endif %}
 {% block content %}
+
 
 {% endblock %}
 

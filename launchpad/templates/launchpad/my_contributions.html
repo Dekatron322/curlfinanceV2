@@ -1,0 +1,57 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+
+
+<div id="content" class="app-content">
+    <div class="d-flex align-items-center mb-3">
+
+        <a href="{% url 'launchpad:add_ido' %}">Add Ido</a>
+    
+    </div>
+    
+    <div class="d-flex align-items-center mb-3">
+    
+        <a href="{% url 'launchpad:launchpad' %}">All Idos</a>
+    
+    </div>
+    
+    <div class="d-flex align-items-center mb-3">
+    
+        <a href="{% url 'launchpad:my_idos' %}">My Idos</a>
+    
+    </div>
+    
+    <div class="d-flex align-items-center mb-3">
+    
+        <a href="{% url 'launchpad:my_contributions' %}">My Contributions</a>
+    
+    </div>
+
+
+    {% if result %}
+        {% for item in result %}
+            <small>ido: {{ item.ido.name }}</small><br />
+            <small>contribution: {{ item.contribution.input_amount }} core</small><br />
+            <small>reward: {{ item.contribution.output_amount }} {{ item.ido.name }}</small><br />
+            <small>Presale started: {{ item.ido.ido_start }}</small><br />
+            <small>Presale will end: {{ item.ido.ido_stop }}</small><br />
+            <a href="{% url 'launchpad:claim' item.ido.id %}">Claim Reward</a>
+            <a href="{% url 'launchpad:details' item.ido.id %}">View Ido</a>
+            <a href="{% url 'launchpad:contribute' item.ido.id %}">Add to Contribution</a>
+            <a href="{% url 'launchpad:e_withdraw' item.ido.id %}">Emergency Withdraw</a>
+            <hr>
+        {% endfor %}
+
+    {% else %}
+        <p>Sorry, no contributions found.</p>
+    {% endif %}
+
+
+
+{% endblock %}
+

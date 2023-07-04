@@ -9,20 +9,20 @@
 
 {{data.sender}}
 <div class="login-content form-group">
-<form action="" method="POST" name="">
+<form method="POST">
 	{% csrf_token %}
 <h1 class="text-center">Contribute</h1>
 <h4 style="text-align:center"><img class="img-fluid rounded-circle" width="35px" src="https://curlfinance.com/static/assets/images/logo/curlfi.png" alt=""  data-bs-toggle="modal" data-bs-target="#exampleModal">$CURL</h4>
 
 <div class=" flex-1">
 
-<div class="mb-2 fs-5 text-truncate">Progress: 20.04%</div>
+<div class="mb-2 fs-5 text-truncate">Progress: {{ progress }}%</div>
 <div class="progress h-3px bg-white-transparent-2 mb-1" style="height: 15px !important;">
-<div class="progress-bar bg-theme" style="width: 30%;"></div>
+<div class="progress-bar bg-theme" style="width: {{ progress }}%;"></div>
 </div>
 <div class="d-flex form-group mb-3">
-<label class="form-label">200 Core </label>
-<a  class="ms-auto text-white text-decoration-none text-opacity-50">20,000 Core</a>
+<label class="form-label">{{ contributions }} Core </label>
+<a  class="ms-auto text-white text-decoration-none text-opacity-50">{{ ido.hard_cap }} Core</a>
 </div>
 
 </div>
@@ -31,17 +31,18 @@
 <label class="form-label">Amount <span class="text-danger">*</span></label>
 
 </div>
-<input name="amount" type="number" class="form-control form-control-lg bg-white bg-opacity-5 prc" value="" placeholder="0.00" />
+You can start: {{ min_val }}curl - {{ max_val }}curl
+<input name="input_amount" type="number" step="0.001" min="{{ min_val }}" max="max_val" class="form-control form-control-lg bg-white bg-opacity-5 prc" value="" placeholder="0.00" />
 </div>
 <div class="mb-3">
 
 
-<div class="d-flex justify-content-between fw-600 fs-16 my-5 form-group" style="color: #757575;"><span class="fw-600 fs-16">You'll Recieve:</span><span> <output id="result"></output>.00 Curl</span></div>
+<div class="d-flex justify-content-between fw-600 fs-16 my-5 form-group" style="color: #757575;"><span class="fw-600 fs-16">You'll Recieve:</span><span> <output id="result"></output> {{ ido.name }}</span></div>
 </div>
 
-<button type="submit" class="btn btn-outline-theme btn-sm d-block w-100 fw-500 mb-3">Connect Wallet</button>
+<button type="submit" class="btn btn-outline-theme btn-sm d-block w-100 fw-500 mb-3">Contribute</button>
 
-<p style="text-align:center">Ends In: 26/03/2023 - 11:59pm</p>
+<p style="text-align:center">Ends In: {{ ido.ido_stop }}</p>
 <div class="card">
 
 <div class="card-body">
@@ -63,21 +64,21 @@
 <div>Min Contribution</div>
 </div>
 <div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">5 Core</span> </div>
+<div class="col-3 "><span class="text-theme">{{ ido.tier0_min }} Core</span> </div>
 </div>
 <div class="row mb-2">
 <div class="col-6">
 <div>Max Contribution</div>
 </div>
 <div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">100 Core</span> </div>
+<div class="col-3 "><span class="text-theme">{{ ido.tier0_max }} Core</span> </div>
 </div>
 <div class="row">
 <div class="col-6">
 <div>Total Contributors</div>
 </div>
 <div class="col-3 text-center"></div>
-<div class="col-3 "><span class="text-theme">45</span> </div>
+<div class="col-3 "><span class="text-theme">{{ ido.contributors.count }}</span> </div>
 </div>
 
 
@@ -93,6 +94,13 @@
 
 </div>
 <br>
+
+<div class="d-flex align-items-center mb-3">
+
+  <a href="{% url 'launchpad:e_withdraw' ido.id %}">Emergency Withdraw</a>
+
+</div>
+
 <button type="submit" class="btn btn-outline-white btn-sm d-block w-100 fw-500 mb-3">Emergency Withdraw</button>
 </div>
 
@@ -104,22 +112,38 @@
 
 </div>
 
-<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
-                                            <script>
-                                                $('.form-group').on('input', '.prc', function(){
-                                                    var totalSum = 0;
-                                                    $('.form-group .prc').each(function() {
-                                                        var inputVal = $(this).val();
-                                                        if($.isNumeric(inputVal)){
-                                                            totalSum += parseFloat(inputVal);
-                                                        }
-                                                        $('#result').text(totalSum);
-                                                    })
-                                                });
-                                            </script>
-
-
 <a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script>
+    $('.form-group').on('input', '.prc', function(){
+        var totalSum = 0;
+        $('.form-group .prc').each(function() {
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal)){
+                totalSum = {{ ido.presale_price }} * parseFloat(inputVal);
+            }
+            $('#result').text(totalSum);
+        })
+    });
+</script>
+
+<script>
+    $(function () {
+  $("input").keydown(function () {
+    // Save old value.
+    if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+    $(this).data("old", $(this).val());
+  });
+  $("input").keyup(function () {
+    // Check correct, else revert back to old value.
+    if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+      ;
+    else
+      $(this).val($(this).data("old"));
+  });
+});
+</script>
 
 {% endblock %}
